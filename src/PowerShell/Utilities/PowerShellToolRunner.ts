@@ -6,11 +6,13 @@ export default class PowerShellToolRunner {
 
     static async init() {
         if(!PowerShellToolRunner.psPath) {
+            console.log(`${await io.which("pwsh", true)}`)
             PowerShellToolRunner.psPath = await io.which("pwsh", true);
         }
     }
 
     static async executePowerShellScriptBlock(scriptBlock: string, options: any = {}) {
+        console.log(`scriptBlock ${scriptBlock}`)
         await exec.exec(`${PowerShellToolRunner.psPath} -Command`, [scriptBlock], options)
     }
 }
