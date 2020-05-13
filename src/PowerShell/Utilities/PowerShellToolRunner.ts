@@ -14,6 +14,6 @@ export default class PowerShellToolRunner {
 
     static async executePowerShellScriptBlock(scriptBlock: string, options: any = {}) {
         console.log(`scriptBlock ${scriptBlock}`)
-        await exec.exec(`${PowerShellToolRunner.psPath} -Command`, [scriptBlock], options)
+        await exec.exec(`"${PowerShellToolRunner.psPath} -Command"`, [scriptBlock], options)
     }
 }
