@@ -40,17 +40,25 @@ export default class Utils {
                 }
             }
         };
+        console.log(`options: ${options}`);
+        console.log(`Running PowerShellToolRunner.init()`);
         await PowerShellToolRunner.init();
+        console.log(`Running PowerShellToolRunner.executePowerShellScriptBlock`);
         await PowerShellToolRunner.executePowerShellScriptBlock(new ScriptBuilder()
                                 .getLatestModuleScript(moduleName), options);
+        console.log(`Running JSON.parse`);
         const result = JSON.parse(output.trim());
+        console.log(`JSON results: ${result}`);
         if (!(Constants.Success in result)) {
             throw new Error(result[Constants.Error]);
         }
+        console.log(`Running result[Constants.AzVersion]`);
         const azLatestVersion: string = result[Constants.AzVersion];
         if (!Utils.isValidVersion(azLatestVersion)) {
+            console.log(`azLatestVersion: ${azLatestVersion}`);
             throw new Error(`Invalid AzPSVersion: ${azLatestVersion}`);
         }
+        console.log(`Running azLatestVersion`);
         return azLatestVersion;
     }
 

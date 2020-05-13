@@ -45,7 +45,7 @@ async function main() {
             await spnlogin.initialize();
             await spnlogin.login();
         }
-        console.log("Login successful.");    
+        console.log("Login successful.");
     } catch (error) {
         if (!isAzCLISuccess) {
             core.error("Az CLI Login failed. Please check the credentials. For more information refer https://aka.ms/create-secrets-for-GitHub-workflows");
