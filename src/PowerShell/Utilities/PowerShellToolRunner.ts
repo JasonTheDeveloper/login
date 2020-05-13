@@ -5,6 +5,7 @@ export default class PowerShellToolRunner {
     static psPath: string;
 
     static async init() {
+        console.log(`PowerShellToolRunner.psPath ${PowerShellToolRunner.psPath}`)
         if(!PowerShellToolRunner.psPath) {
             console.log(`${await io.which("pwsh", true)}`)
             PowerShellToolRunner.psPath = await io.which("pwsh", true);
