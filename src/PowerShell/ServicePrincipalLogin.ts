@@ -22,9 +22,12 @@ export class ServicePrincipalLogin implements IAzurePowerShellSession {
     }
 
     async initialize() {
+        console.log(`Running Utils.setPSModulePath()`);
         Utils.setPSModulePath();
+        console.log(`Running Utils.getLatestModule`);
         const azLatestVersion: string = await Utils.getLatestModule(Constants.moduleName);
         core.debug(`Az Module version used: ${azLatestVersion}`);
+        console.log(`Running Utils.setPSModulePath 2`);
         Utils.setPSModulePath(`${Constants.prefix}${azLatestVersion}`);
     }
 
